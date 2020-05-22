@@ -1,0 +1,4 @@
+class Guests
+
+
+end
