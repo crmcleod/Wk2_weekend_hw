@@ -8,6 +8,10 @@ require_relative('../guests')
 require_relative('../rooms')
 require_relative('../songs')
 
-class GuestsTest < MiniTest::Test
+class GuestTest < MiniTest::Test
+
+    def setup
+        @guest = Guest.new("Elton", "I'm still standing", 1)
+    end
 
 end

@@ -10,4 +10,8 @@ require_relative('../songs')
 
 class BarTabTest < MiniTest::Test
 
+    def setup
+        @bar_tab = BarTab.new("Elton", 3000)
+    end
+
 end
