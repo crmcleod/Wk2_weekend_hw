@@ -13,6 +13,7 @@ class RoomTest < MiniTest::Test
     def setup
         @room = Room.new("Under the sea", 5 )
         @song1 = Song.new("Elton John", "I'm still standing", 5)
+        @guest1 = Guest.new("Freddie", "Under Pressure", 4)
     end
 
     def test_rooms_have_theme
@@ -24,8 +25,25 @@ class RoomTest < MiniTest::Test
     end
 
     def test_rooms_have_songbook
-        assert_equal({}, @room.songbook)
+        assert_equal([], @room.songbook())
     end
-        
+
+    def test_rooms_start_with_empty_guest_hash
+        assert_equal([], @room.guests_in_room())
+    end
+
+    def test_can_check_guest_in
+        @room.check_in(@guest1)
+        assert_equal("Freddie", @guest1.name())
+    end
+  
+    def test_number_of_guests_checked_into_room
+        @room.check_in(@guest1)
+        assert_equal(1, @room.number_of_guests())
+    end
+    # def test_can_check_guest_out
+    #     @room.check_in(@guest1)
+    #     @room.check_out(@guest1)
+    #     assert_equal()
 
 end
