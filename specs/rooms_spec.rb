@@ -18,7 +18,7 @@ class RoomTest < MiniTest::Test
         @room5 = Room.new("Woodland", 20)
         @song1 = Song.new("Elton John", "I'm still standing", 5)
         @guest1 = Guest.new("Freddie", "Under Pressure", 4)
-        @guest2 = Guest.new("Bruce", "Bob the Builder", 2)
+        @guest2 = Guest.new("Bruce", "Can We Fix It", 2)
         @guest3 = Guest.new("Cher", "Believe", 3)
     end
 
@@ -30,9 +30,12 @@ class RoomTest < MiniTest::Test
         assert_equal(5, @room1.capacity())
     end
 
-    def test_rooms_have_songbook
-        assert_equal([], @room1.songbook())
+    def test_rooms_have_song_queue
+        assert_equal([], @room1.song_queue())
     end
+
+    # def test_songs_can_be_added_to_song_queue
+    #     assert_equal([])
 
     def test_rooms_start_with_empty_guest_hash
         assert_equal([], @room1.guests_in_room())

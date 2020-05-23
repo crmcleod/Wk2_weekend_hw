@@ -1,12 +1,12 @@
 class Room
 
-    attr_reader :theme, :capacity, :guests_in_room, :songbook, :time_limit
+    attr_reader :theme, :capacity, :guests_in_room, :song_queue, :time_limit
     
-    def initialize(theme, capacity, guests_in_room = [], songbook = [])
+    def initialize(theme, capacity, guests_in_room = [], song_queue = [])
         @theme = theme
         @capacity = capacity
         @guests_in_room = guests_in_room
-        @songbook = songbook
+        @song_queue = song_queue
         @time_limit = Time.new()+1
     end
 
