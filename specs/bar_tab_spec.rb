@@ -11,15 +11,16 @@ require_relative('../songs')
 class BarTabTest < MiniTest::Test
 
     def setup
-        @bar_tab = BarTab.new("Elton", 3000)
+        @bar_tab1 = BarTab.new("Elton", 3000)
+        @bar_tab2 = BarTab.new("Freddie", 100)
     end
 
     def test_bar_tab_has_name
-        assert_equal("Elton", @bar_tab.name())
+        assert_equal("Elton", @bar_tab1.name())
     end
 
     def test_bar_tab_has_value
-        assert_equal(3000, @bar_tab.amount())
+        assert_equal(3000, @bar_tab1.amount())
     end
 
 end

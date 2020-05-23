@@ -1,12 +1,13 @@
 class Room
 
-    attr_reader :theme, :capacity, :guests_in_room, :songbook
+    attr_reader :theme, :capacity, :guests_in_room, :songbook, :time_limit
     
     def initialize(theme, capacity, guests_in_room = [], songbook = [])
         @theme = theme
         @capacity = capacity
         @guests_in_room = guests_in_room
         @songbook = songbook
+        @time_limit = Time.new()+1
     end
 
     def check_in(guest)
@@ -24,4 +25,13 @@ class Room
     def number_of_guests()
        return @guests_in_room.count()
     end
+
+    def time_up()
+        while Time.new != @time_limit
+        end
+        p "Time is up, everybody out!"
+            # use enumerator to move guests back to lobby/bar
+            @guests_in_room.clear()
+    end
+
 end

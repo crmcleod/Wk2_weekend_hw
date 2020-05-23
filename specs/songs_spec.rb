@@ -11,7 +11,26 @@ require_relative('../songs')
 class SongTest < MiniTest::Test
 
     def setup
-        @song = Song.new("Elton John", "I'm still standing", 5)
+        @song1 = Song.new("Elton John", "I'm still standing", 5)
+        @song2 = Song.new("Queen", "Under Pressure", 5)
+        @song3 = Song.new("Cher", "Believe", 2)
+        @song4 = Song.new("Bruce Springsteen", "Born in the USA", 1)
+        @song5 = Song.new("Blur", "Song 2", 2)
+        @song6 = Song.new("Lionel Ritchie", "Hello", 2)
+        @song7 = Song.new("Adele", "Hello", 5)
+        @song8 = Song.new("Sia", "Chandelier", 5)
+        @song9 = Song.new("Baccara", "Yes Sir, I Can Boogie", 3)
+        @song10 = Song.new("Chic", "Everybody Dance", 2)
+        @song11 = Song.new("Ed Sheeran", "Shape of You", 4)
+        @song12 = Song.new("Tenacious D", "Beelzeboss", 3)
+        @song13 = Song.new("Slipknot", "Wait and Bleed", 4)
+        @song14 = Song.new("Barenaked Ladies", "One Weel", 3)
+        @song15 = Song.new("Red Hot Chilli Peppers", "Under the Bridge", 3)
+        @song16 = Song.new("Muse", "Plug In Baby", 4)
+        @song17 = Song.new("Childish Gambino", "This Is America", 4)
+        @song18 = Song.new("Macklemore", "Can't Hold Us", 4)
+        @song19 = Song.new("Clarence Carter", "Strokin'", 3)
+        @song20 = Song.new("Talking Heads", "Pyscho Killer", 4)
     end
 
     def test_song_has_artist
