@@ -1,11 +1,11 @@
 class BarTab
 
 attr_reader :name
-attr_accessor :bar_tab
+attr_accessor :amount
 
-def initialize(name, bar_tab)
+def initialize(name, amount)
     @name = name
-    @bar_tab = bar_tab
+    @amount = amount
 end
 
 

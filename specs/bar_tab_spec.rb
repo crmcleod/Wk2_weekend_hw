@@ -14,4 +14,12 @@ class BarTabTest < MiniTest::Test
         @bar_tab = BarTab.new("Elton", 3000)
     end
 
+    def test_bar_tab_has_name
+        assert_equal("Elton", @bar_tab.name())
+    end
+
+    def test_bar_tab_has_value
+        assert_equal(3000, @bar_tab.amount())
+    end
+
 end

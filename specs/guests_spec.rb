@@ -14,4 +14,15 @@ class GuestTest < MiniTest::Test
         @guest = Guest.new("Elton", "I'm still standing", 1)
     end
 
+    def test_guest_has_name
+        assert_equal("Elton", @guest.name())
+    end
+
+    def test_guest_has_favourite_song
+        assert_equal("I'm still standing", @guest.favourite_song())
+    end
+    
+    def test_guest_skill_level
+        assert_equal(1, @guest.skill_level)
+    end
 end
