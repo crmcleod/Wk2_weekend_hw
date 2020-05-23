@@ -15,6 +15,7 @@ class RoomTest < MiniTest::Test
         @song1 = Song.new("Elton John", "I'm still standing", 5)
         @guest1 = Guest.new("Freddie", "Under Pressure", 4)
         @guest2 = Guest.new("Bruce", "Bob the Builder", 2)
+        @guest3 = Guest.new("Cher", "Believe", 3)
     end
 
     def test_rooms_have_theme
@@ -47,6 +48,29 @@ class RoomTest < MiniTest::Test
         @room.check_in(@guest1)
         @room.check_in(@guest2)
         assert_equal(2, @room.number_of_guests())
+    end
+
+    def test_guests_cant_enter_if_room_full
+        @room.check_in(@guest1)
+        @room.check_in(@guest1)
+        @room.check_in(@guest1)
+        @room.check_in(@guest1)
+        @room.check_in(@guest1)
+        @room.check_in(@guest1)
+        assert_equal(5, @room.number_of_guests())
+    end
+
+    def test_guests_can_be_checked_out
+        @room.check_in(@guest1)
+        @room.check_in(@guest2)
+        @room.check_in(@guest3)
+        @room.check_in(@guest1)
+        @room.check_in(@guest1)
+        @room.check_in(@guest1)
+        @room.check_out(@guest2)
+        @room.check_out(@guest3)
+
+        assert_equal(3, @room.number_of_guests())
     end
 
 end
