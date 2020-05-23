@@ -1,6 +1,7 @@
 class Room
 
-    attr_reader :theme, :capacity, :guests_in_room, :song_queue, :time_limit
+    attr_reader :theme, :capacity, :guests_in_room, :time_limit
+    attr_accessor :song_queue
     
     def initialize(theme, capacity, guests_in_room = [], song_queue = [])
         @theme = theme
@@ -24,6 +25,17 @@ class Room
 
     def number_of_guests()
        return @guests_in_room.count()
+    end
+
+    def add_song(song)
+        @song_queue << song
+    end
+
+    # def clear_song
+    #     if 
+
+    def song_queue_length
+        return @song_queue.length()
     end
 
     def time_up()
