@@ -1,10 +1,15 @@
 class Room
 
-    attr_reader :room_theme, :capacity, :songbook
+    attr_reader :theme, :capacity, :songbook
     
-    def initialize(room_theme, capacity)
-        @room_theme = room_theme
+    def initialize(theme, capacity)
+        @theme = theme
         @capacity = capacity
         @songbook = Hash.new(0)
     end
+
+    def song_book(songs)
+        return @songbook[songs]
+    end
+
 end

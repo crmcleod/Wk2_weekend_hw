@@ -12,8 +12,20 @@ class RoomTest < MiniTest::Test
 
     def setup
         @room = Room.new("Under the sea", 5 )
-        @song1.new("Elton John", "I'm still standing", 5)
+        @song1 = Song.new("Elton John", "I'm still standing", 5)
     end
 
+    def test_rooms_have_theme
+        assert_equal("Under the sea", @room.theme())
+    end
+
+    def test_rooms_have_defined_capacity
+        assert_equal(5, @room.capacity())
+    end
+
+    def test_rooms_have_songbook
+        assert_equal({}, @room.songbook)
+    end
+        
 
 end
