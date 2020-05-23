@@ -27,9 +27,6 @@ class SongTest < MiniTest::Test
         assert_equal(5, @song.difficulty_level)
     end
 
-    def add_song_to_queue(song)
-        @room.song_queue << song
-    end
-
+    
 
 end

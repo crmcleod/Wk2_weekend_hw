@@ -5,7 +5,7 @@ attr_accessor :amount
 
 def initialize(name, amount)
     @name = name
-    @amount = Hash.new(0)
+    @amount = amount
 end
 
 

@@ -8,7 +8,7 @@ class Guest
     @skill_level = skill_level
 end
 
-    # def add_song(song)
-    #     @room1.song_queue << song
-    # end
+    def find_song(title, artist)
+        
+
 end

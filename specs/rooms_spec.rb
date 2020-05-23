@@ -39,6 +39,9 @@ class RoomTest < MiniTest::Test
         @guest1 = Guest.new("Freddie", "Under Pressure", 4)
         @guest2 = Guest.new("Bruce", "Can We Fix It", 2)
         @guest3 = Guest.new("Cher", "Believe", 3)
+
+        @song_book = [@song1, @song2, @song3, @song4, @song5, @song6, @song7, @song8, @song9, @song10, @song11, @song12, @song13, @song14, @song15, @song16, @song17, @song18, @song19, @song20]
+    
     end
 
     def test_rooms_have_theme
@@ -58,11 +61,14 @@ class RoomTest < MiniTest::Test
         assert_equal(1, @room1.song_queue_length)
     end
 
-    # def test_can_add_song_to_queue
-    #    @room1.add_song(@song1)
-    #    assert_equal(1, @room1.song_queue_length)
-    # end
 
+    # needs heavy refactoring
+    def test_song_by_artist
+        @room1.add_song(@song2)
+        song_artists = @room1.song_queue.map { |song| song.artist}
+        artist_for_song = song_artists[0]
+        assert_equal("Queen", artist_for_song)
+    end
 
     # def test_songs_can_be_added_to_song_queue__all_songs
     #     @room1.add_all_songs(@room1)

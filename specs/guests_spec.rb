@@ -25,4 +25,8 @@ class GuestTest < MiniTest::Test
     def test_guest_skill_level
         assert_equal(1, @guest.skill_level)
     end
+
+    def test_guest_can_find_song_in_queue
+        # @songs.find_a_song()
+    end
 end
