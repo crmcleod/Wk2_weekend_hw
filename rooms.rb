@@ -33,10 +33,7 @@ class Room
     end
 
     def add_all_songs(song_book, song_queue)
-        for song in song_book
-            song_queue << song
-        end
-    
+        song_book.each { |song| song_queue << song}
     end
 
     def time_up()

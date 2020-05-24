@@ -17,13 +17,13 @@ class RoomTest < MiniTest::Test
         @room4 = Room.new("Lone Wolf", 1, @song_book)
         @room5 = Room.new("Woodland", 20, @song_book)
 
-        @guest = Guest.new("Elton", "I'm still standing", 1)
-        @guest1 = Guest.new("Freddie", "Under Pressure", 4)
-        @guest2 = Guest.new("Bruce", "Can We Fix It", 2)
-        @guest3 = Guest.new("Cher", "Believe", 3)
-        @guest4 = Guest.new("Noel", "Chandelier", 2)
-        @guest5 = Guest.new("Prince", "Wait and Bleed", 4)
-        @guest6 = Guest.new("Jay-Z", "Song 2", 3)
+        @guest = Guest.new("Elton", "I'm still standing", 1, 60)
+        @guest1 = Guest.new("Freddie", "Under Pressure", 4, 50)
+        @guest2 = Guest.new("Bruce", "Can We Fix It", 2, 25)
+        @guest3 = Guest.new("Cher", "Believe", 3, 60)
+        @guest4 = Guest.new("Noel", "Chandelier", 2, 65)
+        @guest5 = Guest.new("Prince", "Wait and Bleed", 4, 70)
+        @guest6 = Guest.new("Jay-Z", "Song 2", 3, 100)
 
         @song1 = Song.new("Elton John", "I'm still standing", 5)
         @song2 = Song.new("Queen", "Under Pressure", 5)
@@ -124,6 +124,8 @@ class RoomTest < MiniTest::Test
         @room1.check_out(@guest3)
         assert_equal(3, @room1.number_of_guests())
     end
+
+
 
     # def test_time_is_up_empty_the_room
         
