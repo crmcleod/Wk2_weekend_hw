@@ -9,5 +9,4 @@ class Guest
     @wallet = wallet
     end
 
-    # def find_song(title, artist)
 end

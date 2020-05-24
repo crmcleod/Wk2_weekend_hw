@@ -72,13 +72,10 @@ class RoomTest < MiniTest::Test
         assert_equal(1, @room1.song_queue.length())
     end
 
-
-    # needs heavy refactoring
     def test_song_by_artist
         @room1.add_song(@song2)
         song_artists = @room1.song_queue.map { |song| song.artist}
-        artist_for_song = song_artists[0]
-        assert_equal("Queen", artist_for_song)
+        assert_equal("Queen", song_artists[0])
     end
 
     def test_songbook_has_songs
@@ -140,11 +137,13 @@ class RoomTest < MiniTest::Test
     def test_can_guest_afford_room__accepted
         assert_equal(true, @room1.can_guest_afford_room(@guest3, @room5))
     end
+
     # def test_time_is_up_empty_the_room
         
     #     @room1.check_in(@guest1, @room4)
     #     @room1.check_in(@guest2, @room4)
     #     @room1.check_in(@guest3, @room4)
+    #     system('clear')
     #     p "Your five minute countdown is on!"
     #     @room1.time_up()
     #     assert_equal(0, @room1.number_of_guests())
