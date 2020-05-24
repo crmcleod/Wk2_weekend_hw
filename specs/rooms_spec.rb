@@ -11,11 +11,17 @@ require_relative('../songs')
 class RoomTest < MiniTest::Test
 
     def setup
-        @room1 = Room.new("Under the sea", 5)
-        @room2 = Room.new("Cloud 9", 10)
-        @room3 = Room.new("Valhalla", 8)
-        @room4 = Room.new("Lone Wolf", 1)
-        @room5 = Room.new("Woodland", 20)
+        @room1 = Room.new("Under the sea", 5, @song_book)
+        @room2 = Room.new("Cloud 9", 10, @song_book)
+        @room3 = Room.new("Valhalla", 8, @song_book)
+        @room4 = Room.new("Lone Wolf", 1, @song_book)
+        @room5 = Room.new("Woodland", 20, @song_book)
+
+        @guest = Guest.new("Elton", "I'm still standing", 1)
+        @guest1 = Guest.new("Freddie", "Under Pressure", 4)
+        @guest2 = Guest.new("Bruce", "Can We Fix It", 2)
+        @guest3 = Guest.new("Cher", "Believe", 3)
+
         @song1 = Song.new("Elton John", "I'm still standing", 5)
         @song2 = Song.new("Queen", "Under Pressure", 5)
         @song3 = Song.new("Cher", "Believe", 2)
@@ -36,11 +42,11 @@ class RoomTest < MiniTest::Test
         @song18 = Song.new("Macklemore", "Can't Hold Us", 4)
         @song19 = Song.new("Clarence Carter", "Strokin'", 3)
         @song20 = Song.new("Talking Heads", "Pyscho Killer", 4)
-        @guest1 = Guest.new("Freddie", "Under Pressure", 4)
-        @guest2 = Guest.new("Bruce", "Can We Fix It", 2)
-        @guest3 = Guest.new("Cher", "Believe", 3)
 
-        @song_book = [@song1, @song2, @song3, @song4, @song5, @song6, @song7, @song8, @song9, @song10, @song11, @song12, @song13, @song14, @song15, @song16, @song17, @song18, @song19, @song20]
+        @song_book = [@song1, @song2, @song3, @song4, @song5, @song6, @song7, 
+                        @song8, @song9, @song10, @song11, @song12, @song13, 
+                        @song14, @song15, @song16, @song17, @song18, @song19, 
+                        @song20]
     
     end
 
@@ -58,7 +64,7 @@ class RoomTest < MiniTest::Test
 
     def test_add_song_to_queue
         @room1.add_song(@song1)
-        assert_equal(1, @room1.song_queue_length)
+        assert_equal(1, @room1.song_queue.length())
     end
 
 
@@ -70,10 +76,15 @@ class RoomTest < MiniTest::Test
         assert_equal("Queen", artist_for_song)
     end
 
-    # def test_songs_can_be_added_to_song_queue__all_songs
-    #     @room1.add_all_songs(@room1)
-    #     assert_equal(20, @room1.song_queue_length)
-    # end
+    def test_songbook_has_songs
+        assert_equal(20, @song_book.length())
+    end
+
+    def test_songs_can_be_added_to_song_queue__all_songs
+        @room1.add_all_songs(@song_book, @room1.song_queue)
+        # binding.pry
+        assert_equal(20, @room1.song_queue.length())
+    end
 
     def test_rooms_start_with_empty_guest_hash
         assert_equal([], @room1.guests_in_room())
