@@ -1,6 +1,6 @@
 class Room
 
-    attr_reader :theme, :capacity, :guests_in_room, :time_limit, :song_book
+    attr_reader :theme, :capacity, :guests_in_room, :time_limit, :song_book, :cost
     attr_accessor :song_queue
     
     def initialize(theme, capacity, guests_in_room = [], song_queue = [], song_book)
@@ -8,15 +8,22 @@ class Room
         @capacity = capacity
         @guests_in_room = guests_in_room
         @song_queue = song_queue
-        @time_limit = Time.new()+1
+        @time_limit = Time.new()+3
         @song_book = song_book
+        @cost = 10
     end
 
-    def check_in(guest)
-        if number_of_guests < capacity
-        @guests_in_room << guest
-        else
-            p "Sorry the room is full, try another"
+    def check_in(guest, room)
+
+        if can_guest_afford_room(guest, room) != true
+            p "Sorry #{guest.name}, but you don't have enough money!"
+        end
+        if
+            can_guest_afford_room(guest, room) == true &&
+            number_of_guests < capacity
+            @guests_in_room << guest
+        elsif number_of_guests == capacity
+            p "Sorry #{guest.name}, but there's no space for you in the #{room.theme} room."
         end
     end
 
@@ -42,6 +49,14 @@ class Room
         p "Time is up, everybody out!"
             # use enumerator to move guests back to lobby/bar
             @guests_in_room.clear()
+    end
+
+    def can_guest_afford_room(guest, room)
+        if guest.wallet >= room.cost
+            return true
+        else
+            return false
+        end
     end
 
 end

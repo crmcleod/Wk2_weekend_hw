@@ -36,4 +36,7 @@ class GuestTest < MiniTest::Test
     def test_guest_has_wallet
         assert_equal(50, @guest1.wallet())
     end
+
+    # def test_guest_can_sing_favourite_song
+    #     assert_equal("Believe", @guest3.favourite_song())
 end

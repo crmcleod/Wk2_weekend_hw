@@ -19,8 +19,8 @@ class BarTabTest < MiniTest::Test
         assert_equal("Elton", @bar_tab1.name())
     end
 
-    def test_bar_tab_has_value
-        assert_equal(3000, @bar_tab1.amount())
+    def test_bar_tab_starts_at_zero
+        assert_equal(0, @bar_tab1.amount())
     end
 
 end

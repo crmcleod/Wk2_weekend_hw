@@ -11,19 +11,15 @@ require_relative('../songs')
 class RoomTest < MiniTest::Test
 
     def setup
-        @room1 = Room.new("Under the sea", 5, @song_book)
-        @room2 = Room.new("Cloud 9", 10, @song_book)
-        @room3 = Room.new("Valhalla", 8, @song_book)
-        @room4 = Room.new("Lone Wolf", 1, @song_book)
-        @room5 = Room.new("Woodland", 20, @song_book)
-
+        
         @guest = Guest.new("Elton", "I'm still standing", 1, 60)
         @guest1 = Guest.new("Freddie", "Under Pressure", 4, 50)
-        @guest2 = Guest.new("Bruce", "Can We Fix It", 2, 25)
+        @guest2 = Guest.new("Bruce", "Can We Fix It", 2, 5)
         @guest3 = Guest.new("Cher", "Believe", 3, 60)
         @guest4 = Guest.new("Noel", "Chandelier", 2, 65)
         @guest5 = Guest.new("Prince", "Wait and Bleed", 4, 70)
         @guest6 = Guest.new("Jay-Z", "Song 2", 3, 100)
+        @guest7 = Guest.new("Pavarotti", "Yes Sir, I Can Boogie", 5, 30)
 
         @song1 = Song.new("Elton John", "I'm still standing", 5)
         @song2 = Song.new("Queen", "Under Pressure", 5)
@@ -50,6 +46,12 @@ class RoomTest < MiniTest::Test
                         @song8, @song9, @song10, @song11, @song12, @song13, 
                         @song14, @song15, @song16, @song17, @song18, @song19, 
                         @song20]
+
+        @room1 = Room.new("Under the sea", 5, @song_book)
+        @room2 = Room.new("Cloud 9", 10, @song_book)
+        @room3 = Room.new("Valhalla", 8, @song_book)
+        @room4 = Room.new("Lone Wolf", 1, @song_book)
+        @room5 = Room.new("Woodland", 20, @song_book)
     
     end
 
@@ -93,45 +95,56 @@ class RoomTest < MiniTest::Test
     end
   
     def test_number_of_guests_checked_into_room__single
-        @room1.check_in(@guest1)
+        @room1.check_in(@guest1, @room1)
         assert_equal(1, @room1.number_of_guests())
     end
 
     def test_number_of_guests_checked_into_room__multiple
-        @room1.check_in(@guest1)
-        @room1.check_in(@guest2)
+        @room1.check_in(@guest1, @room1)
+        @room1.check_in(@guest6, @room1)
         assert_equal(2, @room1.number_of_guests())
     end
 
     def test_guests_cant_enter_if_room_full
-        @room1.check_in(@guest1)
-        @room1.check_in(@guest1)
-        @room1.check_in(@guest1)
-        @room1.check_in(@guest1)
-        @room1.check_in(@guest1)
-        @room1.check_in(@guest1)
+        # @room1.add_all_songs(@song_book, @room1.song_queue())
+        @room1.check_in(@guest2, @room1)
+        @room1.check_in(@guest1, @room1)
+        @room1.check_in(@guest6, @room1)
+        @room1.check_in(@guest3, @room1)
+        @room1.check_in(@guest4, @room1)
+        @room1.check_in(@guest5, @room1)
+        @room1.check_in(@guest7, @room1)
         assert_equal(5, @room1.number_of_guests())
     end
 
     def test_guests_can_be_checked_out
-        @room1.check_in(@guest1)
-        @room1.check_in(@guest2)
-        @room1.check_in(@guest3)
-        @room1.check_in(@guest4)
-        @room1.check_in(@guest5)
-        @room1.check_in(@guest1)
-        @room1.check_out(@guest2)
+        @room1.check_in(@guest1, @room1)
+        @room1.check_in(@guest6, @room1)
+        @room1.check_in(@guest3, @room1)
+        @room1.check_in(@guest4, @room1)
+        @room1.check_in(@guest5, @room1)
+        @room1.check_in(@guest1, @room1)
+        @room1.check_out(@guest6)
         @room1.check_out(@guest3)
         assert_equal(3, @room1.number_of_guests())
     end
 
+    def test_room_has_cost
+        assert_equal(10, @room1.cost())
+    end
 
+    def test_can_guest_afford_room__rejected
+        assert_equal(false ,@room1.can_guest_afford_room(@guest2, @room1))
+    end
 
+    def test_can_guest_afford_room__accepted
+        assert_equal(true, @room1.can_guest_afford_room(@guest3, @room5))
+    end
     # def test_time_is_up_empty_the_room
         
-    #     @room1.check_in(@guest1)
-    #     @room1.check_in(@guest2)
-    #     @room1.check_in(@guest3)
+    #     @room1.check_in(@guest1, @room4)
+    #     @room1.check_in(@guest2, @room4)
+    #     @room1.check_in(@guest3, @room4)
     #     p "Your five minute countdown is on!"
     #     @room1.time_up()
     #     assert_equal(0, @room1.number_of_guests())
