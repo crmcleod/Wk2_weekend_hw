@@ -21,6 +21,9 @@ class RoomTest < MiniTest::Test
         @guest1 = Guest.new("Freddie", "Under Pressure", 4)
         @guest2 = Guest.new("Bruce", "Can We Fix It", 2)
         @guest3 = Guest.new("Cher", "Believe", 3)
+        @guest4 = Guest.new("Noel", "Chandelier", 2)
+        @guest5 = Guest.new("Prince", "Wait and Bleed", 4)
+        @guest6 = Guest.new("Jay-Z", "Song 2", 3)
 
         @song1 = Song.new("Elton John", "I'm still standing", 5)
         @song2 = Song.new("Queen", "Under Pressure", 5)
@@ -32,10 +35,10 @@ class RoomTest < MiniTest::Test
         @song8 = Song.new("Sia", "Chandelier", 5)
         @song9 = Song.new("Baccara", "Yes Sir, I Can Boogie", 3)
         @song10 = Song.new("Chic", "Everybody Dance", 2)
-        @song11 = Song.new("Ed Sheeran", "Shape of You", 4)
+        @song11 = Song.new("Bob the Builder", "Can We Fix It", 2)
         @song12 = Song.new("Tenacious D", "Beelzeboss", 3)
         @song13 = Song.new("Slipknot", "Wait and Bleed", 4)
-        @song14 = Song.new("Barenaked Ladies", "One Weel", 3)
+        @song14 = Song.new("Barenaked Ladies", "One Week", 3)
         @song15 = Song.new("Red Hot Chilli Peppers", "Under the Bridge", 3)
         @song16 = Song.new("Muse", "Plug In Baby", 4)
         @song17 = Song.new("Childish Gambino", "This Is America", 4)
@@ -82,7 +85,6 @@ class RoomTest < MiniTest::Test
 
     def test_songs_can_be_added_to_song_queue__all_songs
         @room1.add_all_songs(@song_book, @room1.song_queue)
-        # binding.pry
         assert_equal(20, @room1.song_queue.length())
     end
 
@@ -115,8 +117,8 @@ class RoomTest < MiniTest::Test
         @room1.check_in(@guest1)
         @room1.check_in(@guest2)
         @room1.check_in(@guest3)
-        @room1.check_in(@guest1)
-        @room1.check_in(@guest1)
+        @room1.check_in(@guest4)
+        @room1.check_in(@guest5)
         @room1.check_in(@guest1)
         @room1.check_out(@guest2)
         @room1.check_out(@guest3)

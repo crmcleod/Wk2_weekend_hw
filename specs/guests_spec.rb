@@ -11,10 +11,10 @@ require_relative('../songs')
 class GuestTest < MiniTest::Test
 
     def setup
-        @guest = Guest.new("Elton", "I'm still standing", 1)
-        @guest1 = Guest.new("Freddie", "Under Pressure", 4)
-        @guest2 = Guest.new("Bruce", "Can We Fix It", 2)
-        @guest3 = Guest.new("Cher", "Believe", 3)
+        @guest = Guest.new("Elton", "I'm still standing", 1, 60)
+        @guest1 = Guest.new("Freddie", "Under Pressure", 4, 50)
+        @guest2 = Guest.new("Bruce", "Can We Fix It", 2, 25)
+        @guest3 = Guest.new("Cher", "Believe", 3, 60)
     end
 
     def test_guest_has_name
@@ -26,10 +26,14 @@ class GuestTest < MiniTest::Test
     end
     
     def test_guest_skill_level
-        assert_equal(1, @guest.skill_level)
+        assert_equal(1, @guest.skill_level())
     end
 
-    def test_guest_can_find_song_in_queue
-        # @songs.find_a_song()
+    # def test_guest_can_find_song_in_queue
+    #     # @songs.find_a_song()
+    # end
+    
+    def test_guest_has_wallet
+        assert_equal(50, @guest1.wallet())
     end
 end
