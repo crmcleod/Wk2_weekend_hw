@@ -6,9 +6,9 @@ class Guest
     @name = name
     @favourite_song = favourite_song
     @skill_level = skill_level
-end
+    end
 
-    def find_song(title, artist)
+    # def find_song(title, artist)
         
 
 end
