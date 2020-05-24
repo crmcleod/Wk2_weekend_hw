@@ -103,7 +103,6 @@ class RoomTest < MiniTest::Test
     end
 
     def test_guests_cant_enter_if_room_full
-        # @room1.add_all_songs(@song_book, @room1.song_queue())
         @room1.check_in(@guest2, @room1)
         @room1.check_in(@guest1, @room1)
         @room1.check_in(@guest6, @room1)
